@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CoverType>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2>Cover Type List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="CoverType" asp-action="Create" class="btn btn-light"><i class="bi bi-plus-circle me-2"></i>Create New Cover Type</a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center" style="border:1px solid white; border-collapse: collapse;">Id</th>
+                <th class="text-center" style="border:1px solid white; border-collapse: collapse;">Cover Type Name</th>
+                <th class="text-center" style="border:1px solid white; border-collapse: collapse;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td class="text-center" style="border:1px solid white; border-collapse: collapse">@obj.Id</td>
+                    <td class="text-center" style="border:1px solid white; border-collapse: collapse">@obj.Name</td>
+                    <td class="text-center" style="border:1px solid white; border-collapse: collapse">
+                        <div class="btn-group pe-4" role="group">
+                            <a asp-controller="CoverType" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary rounded-3"><i class="bi bi-pencil-square mx-1"></i>Edit</a>
+                        </div>
+                         <span class="btn-group" role="group">
+                            <a asp-controller="CoverType" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger rounded-3" method="post"><i class="bi bi-trash mx-1"></i>Delete</a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
